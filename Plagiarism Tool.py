@@ -1,5 +1,6 @@
 from nltk.corpus import stopwords
 import nltk
+from nltk.stem import PorterStemmer
 from sklearn.feature_extraction.text import CountVectorizer
 import pandas as pd
 import numpy as np
@@ -28,6 +29,11 @@ sent2 = [b.lower() for b in sent2]
 # StopWord removal
 word1 = [ww for ww in sent1 if ww not in x]
 word2 = [ww for ww in sent2 if ww not in x]
+
+# Stemming for smooth and better performance
+stemmer = PorterStemmer()
+word1 = [stemmer.stem(word) for word in word1]
+word2 = [stemmer.stem(word) for word in word2]
 
 # Joining the sentence back
 word1 = ' '.join(word1)
