@@ -64,4 +64,4 @@ print(f"The similarity between the sentence is given in form of cosine similarit
 print()
 
 print("The bag of word model for the same is given here : ")
-pd.DataFrame(y , index = ['correct answer' , 'Submitted Answer'])
+pd.DataFrame(y , index = ['Sentence 1' , 'Sentence 2'])
