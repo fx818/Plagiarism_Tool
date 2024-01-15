@@ -7,12 +7,12 @@ st.title('Plagiarism Tool')
 
 x = st.text_input('Enter sentence 1 here', placeholder='Sample Text')
 y = st.text_input('Enter sentence 2 here', placeholder='sample text')
-if len(x)==0:
+if len(x)==0 and len(y)==0:
     x = 'Sample Text'
     y = 'sample text'
-if len(y)==0:
-    x = 'Sample Text'
-    y = 'sample text'
+# if len(y)==0:
+#     x = 'Sample Text'
+#     y = 'sample text'
     
 z = tool(x,y)[0]
 m = tool(x,y)[1]
