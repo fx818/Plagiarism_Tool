@@ -68,6 +68,8 @@ def tool(sent1 = 'Sample Text',sent2 = 'sample text'):
 
     row = bow_model.toarray()       
     q1 = cosine_similarity(row[0], row[1])
- 
-    return [q1,y]
+    
+    ret_data = [q1,y]
+    
+    return ret_data
 
