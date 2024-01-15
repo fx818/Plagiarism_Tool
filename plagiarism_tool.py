@@ -66,25 +66,8 @@ def tool(sent1 = 'Sample Text',sent2 = 'sample text'):
     for i in range(len(column)):
         y[column[i]] = row[i]
 
-    row = bow_model.toarray()
- 
-       
+    row = bow_model.toarray()       
     q1 = cosine_similarity(row[0], row[1])
-    # print(f"The similarity between the sentence is given in form of cosine similarity as : {q1}")
-
-    # print()
-
-    # print("The bag of word model for the same is given here : ")
-    # pd.DataFrame(y , index = ['correct answer' , 'Submitted Answer'])
  
-    return q1
+    return [q1,y]
 
-# tool('anurag','Anurag')
-    
-    
-    
-    
-    
-    
-    
-    
