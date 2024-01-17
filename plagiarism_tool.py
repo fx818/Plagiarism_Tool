@@ -3,8 +3,8 @@ def tool(sent1 = 'Sample Text',sent2 = 'sample text'):
     nltk.download('stopwords')
     from nltk.corpus import stopwords
     import nltk
-    from nltk.stem import PorterStemmer
-    from sklearn.feature_extraction.text import CountVectorizer
+    from nltk.stem import PorterStemmer , LancasterStemmer
+    from sklearn.feature_extraction.text import CountVectorizer , TfidfVectorizer
     import pandas as pd
     import numpy as np
 
@@ -28,22 +28,39 @@ def tool(sent1 = 'Sample Text',sent2 = 'sample text'):
         sent2 = 'sample text'
         
 
-    # sent1 = input("Enter the first sentence : ").split()
-    sent1 = sent1.split()
+    # # sent1 = input("Enter the first sentence : ").split()
+    # sent1 = sent1.split()
+    # # Instead of splitting the text we can use word tokenize
+    
+    
+    from nltk.tokenize import word_tokenize
+    sent1 = word_tokenize(sent1)
+    
+    
     sent1 = [b.lower() for b in sent1]
 
     # sent2 = input("Enter the second sentence : ").split()
-    sent2 = sent2.split()
+    # sent2 = sent2.split()
+    
+    sent2 = word_tokenize(sent2)
     sent2 = [b.lower() for b in sent2]
 
     # StopWord removal
     word1 = [ww for ww in sent1 if ww not in x]
     word2 = [ww for ww in sent2 if ww not in x]
 
+    # # Stemming for smooth and better performance
+    # stemmer = PorterStemmer()
+    # word1 = [stemmer.stem(word) for word in word1]
+    # word2 = [stemmer.stem(word) for word in word2]
+    
+    
+    # Instead of porter stemmer we can use Lancaster Stemmer as it can be more accurate
     # Stemming for smooth and better performance
-    stemmer = PorterStemmer()
+    stemmer = LancasterStemmer()
     word1 = [stemmer.stem(word) for word in word1]
     word2 = [stemmer.stem(word) for word in word2]
+    
 
     # Joining the sentence back
     word1 = ' '.join(word1)
@@ -53,7 +70,8 @@ def tool(sent1 = 'Sample Text',sent2 = 'sample text'):
     document = [word1,word2]
 
 
-    vectorizer = CountVectorizer()
+    vectorizer = CountVectorizer(binary = False)
+    # vectorizer = TfidfVectorizer(ngram_range=(1,2))
     bow_model = vectorizer.fit_transform(document)
     row = bow_model.toarray()
 
