@@ -1,6 +1,7 @@
 def tool(sent1 = 'Sample Text',sent2 = 'sample text'):
     import nltk
     nltk.download('stopwords')
+    nltk.download('punkt')
     from nltk.corpus import stopwords
     import nltk
     from nltk.stem import PorterStemmer , LancasterStemmer
