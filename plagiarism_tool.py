@@ -1,10 +1,9 @@
 def tool(sent1 = 'Sample Text',sent2 = 'sample text'):
     import nltk
     nltk.download('stopwords')
-    import tempfile
-    with tempfile.TemporaryDirectory() as temp_dir:
-        nltk.download('punkt', download_dir=temp_dir)
-        nltk.data.path.append(temp_dir)
+    import nltk
+    nltk.download('punkt', download_dir='/tmp/nltk_data', force=True)
+    nltk.data.path.append('/tmp/nltk_data')
     
     from nltk.corpus import stopwords
     import nltk
