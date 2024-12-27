@@ -2,6 +2,7 @@ def tool(sent1 = 'Sample Text',sent2 = 'sample text'):
     import nltk
     nltk.download('stopwords')
     import nltk
+    nltk.download('punkt_tab')
     nltk.download('punkt')
     from nltk.corpus import stopwords
     import nltk
